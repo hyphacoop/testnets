@@ -57,7 +57,7 @@ Hypha will be reviewing the PR to ensure it meets the following criteria:
 - [ ] Instructions on to join
 - [ ] Installation steps 
 - Endpoints
-  - [ ] Seeds OR persistent peers
+  - [ ] Seeds and/or persistent peers, ideally both
   - [ ] State sync nodes (if any)
 
 See the `slasher` chain [page](./slasher) for reference.
