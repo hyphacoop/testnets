@@ -7,17 +7,17 @@
 NODE_HOME=~/.gaia
 NODE_MONIKER=public-testnet
 SERVICE_NAME=cosmovisor
-GAIA_VERSION=v13.0.0-rc0
-CHAIN_BINARY_URL=https://github.com/cosmos/gaia/releases/download/$GAIA_VERSION/gaiad-$GAIA_VERSION-linux-amd64
 STATE_SYNC=true
 GAS_PRICE=0.0025uatom
 # ***
 
-CHAIN_BINARY='gaiad'
+CHAIN_BINARY=gaiad
 CHAIN_ID=theta-testnet-001
 GENESIS_ZIPPED_URL=https://github.com/cosmos/testnets/raw/master/public/genesis.json.gz
 SEEDS="639d50339d7045436c756a042906b9a69970913f@seed-01.theta-testnet.polypore.xyz:26656,3e506472683ceb7ed75c1578d092c79785c27857@seed-02.theta-testnet.polypore.xyz:26656"
-SYNC_RPC="https://rpc.state-sync-01.theta-testnet.polypore.xyz:443,https://rpc.state-sync-02.theta-testnet.polypore.xyz:443"
+SYNC_RPC_1="https://rpc.state-sync-01.theta-testnet.polypore.xyz:443"
+SYNC_RPC_2="Https://rpc.state-sync-02.theta-testnet.polypore.xyz:443"
+SYNC_RPC_SERVERS="$SYNC_RPC_1,$SYNC_RPC_2"
 
 # Install wget and jq
 sudo apt-get install curl jq wget -y
@@ -29,12 +29,16 @@ wget https://go.dev/dl/go1.20.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 
+# Query chain version from state sync server
+chain_version=$(curl -s $SYNC_RPC_1/abci_info | jq -r '.result.response.version')
+
 # Install Gaia binary
 echo "Installing Gaia..."
 mkdir -p $HOME/go/bin
 
 # Download Linux amd64,
-wget $CHAIN_BINARY_URL -O $HOME/go/bin/$CHAIN_BINARY
+chain_binary_url=https://github.com/cosmos/gaia/releases/download/$chain_version/gaiad-$chain_version-linux-amd64
+wget $chain_binary_url -O $HOME/go/bin/$CHAIN_BINARY
 chmod +x $HOME/go/bin/$CHAIN_BINARY
 
 # or build from source
@@ -68,7 +72,7 @@ if $STATE_SYNC ; then
     sed -i -e '/trust_period =/ s/= .*/= "8h0m0s"/' $NODE_HOME/config/config.toml
     sed -i -e "/trust_height =/ s/= .*/= $TRUST_HEIGHT/" $NODE_HOME/config/config.toml
     sed -i -e "/trust_hash =/ s/= .*/= \"$TRUST_HASH\"/" $NODE_HOME/config/config.toml
-    sed -i -e "/rpc_servers =/ s^= .*^= \"$SYNC_RPC\"^" $NODE_HOME/config/config.toml
+    sed -i -e "/rpc_servers =/ s^= .*^= \"$SYNC_RPC_SERVERS\"^" $NODE_HOME/config/config.toml
 else
     echo "Skipping state sync..."
 fi

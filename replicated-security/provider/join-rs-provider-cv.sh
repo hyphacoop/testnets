@@ -16,12 +16,10 @@ NODE_KEY_FILE=~/node_key.json
 NODE_HOME=~/.gaia
 NODE_MONIKER=provider
 SERVICE_NAME=cv-provider
-GAIA_VERSION=v13.0.0-rc0
-CHAIN_BINARY_URL=https://github.com/cosmos/gaia/releases/download/$GAIA_VERSION/gaiad-$GAIA_VERSION-linux-amd64
 STATE_SYNC=true
 # ***
 
-CHAIN_BINARY='gaiad'
+CHAIN_BINARY=gaiad
 CHAIN_ID=provider
 GENESIS_URL=https://github.com/cosmos/testnets/raw/master/replicated-security/provider/provider-genesis.json
 SEEDS="08ec17e86dac67b9da70deb20177655495a55407@provider-seed-01.rs-testnet.polypore.xyz:26656,4ea6e56300a2f37b90e58de5ee27d1c9065cf871@provider-seed-02.rs-testnet.polypore.xyz:26656"
@@ -39,12 +37,16 @@ wget https://go.dev/dl/go1.20.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 
+# Query chain version from state sync server
+chain_version=$(curl -s $SYNC_RPC_1/abci_info | jq -r '.result.response.version')
+
 # Install Gaia binary
 echo "Installing Gaia..."
 mkdir -p $HOME/go/bin
 
 # Download Linux amd64,
-wget $CHAIN_BINARY_URL -O $HOME/go/bin/$CHAIN_BINARY
+chain_binary_url=https://github.com/cosmos/gaia/releases/download/$chain_version/gaiad-$chain_version-linux-amd64
+wget $chain_binary_url -O $HOME/go/bin/$CHAIN_BINARY
 chmod +x $HOME/go/bin/$CHAIN_BINARY
 
 # or install from source
