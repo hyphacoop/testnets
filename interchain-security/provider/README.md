@@ -33,6 +33,7 @@ The provider chain will upgrade to Gaia `v24.0.0-rc0` on **May 20, 2025**
 * `https://rpc.provider-sentry-02.ics-testnet.polypore.xyz`
 * `https://rpc-rs.cosmos.nodestake.top`
 * `https://cosmos-testnet-rpc.itrocket.net`
+* `https://cosmos-testnet-rpc.huginn.tech`
 
 ### API
 
@@ -40,6 +41,7 @@ The provider chain will upgrade to Gaia `v24.0.0-rc0` on **May 20, 2025**
 * `https://rest.provider-sentry-02.ics-testnet.polypore.xyz`
 * `https://api-rs.cosmos.nodestake.top`
 * `https://cosmos-testnet-api.itrocket.net`
+* `https://cosmos-testnet-api.huginn.tech`
 
 ### gRPC
 
@@ -54,6 +56,7 @@ The provider chain will upgrade to Gaia `v24.0.0-rc0` on **May 20, 2025**
 1. `08ec17e86dac67b9da70deb20177655495a55407@provider-seed-01.ics-testnet.polypore.xyz:26656`
 2. `4ea6e56300a2f37b90e58de5ee27d1c9065cf871@provider-seed-02.ics-testnet.polypore.xyz:26656`
 3. `84871382a3ffa5e781034b6519126f2d5ea29f15@cosmos-testnet-seed.itrocket.net:21656`
+4. `0252a488481ff1bc2990ca7684b69c7ead93d9fe@cosmos-testnet-seed.huginn.tech:23656`
 
 ### State sync
 
@@ -77,6 +80,7 @@ Use this [jsfiddle](https://jsfiddle.net/uw4ar8qt/2/).
 * https://snapshots-2.polypore.xyz/ics-testnet/provider/
 * https://nodestake.top/cosmos
 * https://itrocket.net/services/testnet/cosmos/#snap
+* https://services.huginn.tech/network/cosmos-hub-testnet
 
 ## Faucet
 
