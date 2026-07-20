@@ -235,3 +235,4 @@ Run the script, and then follow the procedure below to upgrade to the latest ver
 * When the node reaches height `17185100`, it will attempt to upgrade to Gaia `v27.3.0`. You can use Cosmovisor's auto-download feature or install the `v27.3.0-rc0` release binary.
 * When the node reaches height `17475900`, it will attempt to upgrade to Gaia `v27.4.0`. You can use Cosmovisor's auto-download feature or install the `v27.4.0-rc0` release binary.
 * When the node reaches height `17868500`, it will attempt to upgrade to Gaia `v27.5.0`. You can use Cosmovisor's auto-download feature or install the `v27.5.0-rc0` release binary.
+* When the node reaches height `18257200`, it will attempt to upgrade to Gaia `v27.6.0`. You can use Cosmovisor's auto-download feature or install the `v27.6.0-rc0` release binary.
