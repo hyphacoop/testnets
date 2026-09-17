@@ -18,7 +18,7 @@ The provider chain will upgrade to Gaia `v28.2.0` on **September 17, 2026**
 * Upgrade height: `19056100`
   * Estimated upgrade time: `14:00 UTC`
   * Mintscan countdown: https://www.mintscan.io/ics-testnet-provider/block/19056100
-  * Proposal 327: https://explorer.polypore.xyz/provider/gov/T327
+  * Proposal 327: https://explorer.polypore.xyz/provider/gov/327
 * Upgrade name: `v28.2.0`
 
 <!-- * ⚠️ This is **not** a governance-gated upgrade. You must do one of the following ahead of time:
